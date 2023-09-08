@@ -7,9 +7,9 @@ public class Calculator implements ActionListener {
     JFrame frame;
     JTextField textfield;
     JButton[] numberbts = new JButton[10];
-    JButton[] functionBtns = new JButton[8];
+    JButton[] functionBtns = new JButton[9];
     JButton addButton, subButton, mulButton, divButton;
-    JButton decButton, equButton, delButton, clrButton;
+    JButton decButton, equButton, delButton, clrButton, negButton;
     JPanel panel;
 
     // declare font fmly & style
@@ -38,6 +38,7 @@ public class Calculator implements ActionListener {
         equButton = new JButton("=");
         delButton = new JButton("Delete");
         clrButton = new JButton("Clear");
+        negButton = new JButton("(-)");
 
         functionBtns[0] = addButton;
         functionBtns[1] = subButton;
@@ -47,6 +48,7 @@ public class Calculator implements ActionListener {
         functionBtns[5] = equButton;
         functionBtns[6] = delButton;
         functionBtns[7] = clrButton;
+        functionBtns[8] = negButton;
 
         for (int i = 0; i < 8; i++) {
             functionBtns[i].addActionListener(this);
@@ -61,12 +63,14 @@ public class Calculator implements ActionListener {
             numberbts[i].setFocusable(false);
         }
 
-        delButton.setBounds(50, 430, 145, 50);
-        clrButton.setBounds(205, 430, 145, 50);
+        negButton.setBounds(50, 430, 100, 50);
+        delButton.setBounds(150, 430, 100, 50);
+        clrButton.setBounds(250, 430, 100, 50);
+
         panel = new JPanel();
         panel.setBounds(50, 100, 300, 300);
         panel.setLayout(new GridLayout(4, 4, 10, 10));
-        panel.setBackground(Color.GREEN);
+        // panel.setBackground(Color.GREEN);
 
         panel.add(numberbts[1]);
         panel.add(numberbts[2]);
@@ -150,7 +154,16 @@ public class Calculator implements ActionListener {
             textfield.setText("");
         }
         if (e.getSource() == delButton) {
-
+            String currentText = textfield.getText();
+            textfield.setText("");
+            for (int i = 0; i < currentText.length() - 1; i++) {
+                textfield.setText(textfield.getText() + currentText.charAt(i));
+            }
+        }
+        if (e.getSource() == negButton) {
+            double temp = Double.parseDouble(textfield.getText());
+            temp *= -1;
+            textfield.setText(String.valueOf(temp));
         }
     }
 }
