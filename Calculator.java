@@ -50,7 +50,7 @@ public class Calculator implements ActionListener {
         functionBtns[7] = clrButton;
         functionBtns[8] = negButton;
 
-        for (int i = 0; i < 8; i++) {
+        for (int i = 0; i < 9; i++) {
             functionBtns[i].addActionListener(this);
             functionBtns[i].setFont(myFont);
             functionBtns[i].setFocusable(false);
@@ -90,6 +90,7 @@ public class Calculator implements ActionListener {
         panel.add(divButton);
 
         frame.add(panel);
+        frame.add(negButton);
         frame.add(delButton);
         frame.add(clrButton);
         frame.add(textfield);
