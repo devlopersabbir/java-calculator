@@ -12,4 +12,4 @@ etc button also
 
 ### Application Screenshot
 
-[!calculator screenshot](./screenshots/1.png)
+![calculator screenshot](./screenshots/1.png)
